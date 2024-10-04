@@ -225,6 +225,8 @@ func (e *ethParser) getTransactionsFromBlockNumbers(endingBlockNumber, headBlock
 		return nil, err
 	}
 
+	log.Println("fetching transactions for block", headBlockNumber)
+
 	transactions, err := e.getTransactionsFromBlock(&rpcResponse.Result, address)
 	if err != nil {
 		return nil, err
@@ -268,6 +270,8 @@ func (e *ethParser) getTransactionsInBlockRange(endingBlockNumber int, headBlock
 			break
 		}
 	}
+
+	log.Println("fetching transactions for block", rpcResponse.Result.Number)
 
 	if err != nil {
 		return nil, err
